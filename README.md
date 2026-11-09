@@ -18,6 +18,7 @@
 7. [🔍 7. SEO i Widoczność w Wyszukiwarkach](#-7-seo-i-social-media-opengraph)
 8. [🔒 8. Bezpieczeństwo i Prawo (RODO, Cookies, HTTPS)](#-8-bezpiecze%C5%84stwo-i-aspekty-prawne)
 9. [🧰 9. Najlepsze Darmowe Narzędzia do Audytu](#-9-niezb%C4%99dnik-najlepsze-darmowe-narz%C4%99dzia)
+10. [📚 10. Źródła i Literatura (Official Sources)](#-10-%C5%BAr%C3%B3d%C5%82a-i-literatura-sources--references)
 
 ---
 
@@ -155,6 +156,52 @@ Oto zestaw najpopularniejszych narzędzi online, którymi specjaliści testują 
 | **Metatags.io** | Podgląd jak strona prezentuje się w Google, na Facebooku i Twitterze | [metatags.io](https://metatags.io/) |
 | **Responsively App** | Narzędzie do testowania strony na kilkunastu ekranach naraz | [responsively.app](https://responsively.app/) |
 | **Coolors Contrast** | Sprawdzanie palet kolorystycznych pod kątem daltonizmu | [coolors.co/contrast-checker](https://coolors.co/contrast-checker) |
+
+---
+
+---
+
+## 📚 10. Źródła i Literatura (Sources & References)
+
+Wszystkie wytyczne, wymiary oraz heurystyki zawarte w tym repozytorium opierają się na oficjalnych standardach branżowych, badaniach naukowych oraz dokumentacjach technologicznych:
+
+### 🔬 1. Badania UX i Użyteczności (Nielsen Norman Group)
+* **10 Usability Heuristics for User Interface Design** — Jakob Nielsen  
+  🔗 [nngroup.com/articles/ten-usability-heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
+* **F-Shaped Pattern for Reading Web Content** (Jak użytkownicy skanują strony WWW)  
+  🔗 [nngroup.com/articles/f-shaped-pattern-reading-web-content](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)
+* **How Little Do Users Read?** (Badania dotyczące długości tekstów i czytelnictwa)  
+  🔗 [nngroup.com/articles/how-little-do-users-read](https://www.nngroup.com/articles/how-little-do-users-read/)
+
+### 🌐 2. Standardy Branżowe i Pre-Launch QA (Webflow & Smashing Magazine)
+* **The Ultimate Website Pre-Launch Checklist** — Webflow Blog  
+  🔗 [webflow.com/blog/website-launch-checklist](https://webflow.com/blog/website-launch-checklist)
+* **The Complete Website Launch Checklist (QA & Security)** — Smashing Magazine  
+  🔗 [smashingmagazine.com/2021/03/complete-website-launch-checklist](https://www.smashingmagazine.com/2021/03/complete-website-launch-checklist/)
+* **Responsive Web Design Fundamentals** — Webflow University  
+  🔗 [university.webflow.com/lesson/intro-to-responsive-design](https://university.webflow.com/lesson/intro-to-responsive-design)
+
+### ♿ 3. Dostępność Cyfrowa i Standardy WCAG (W3C & The A11Y Project)
+* **Web Content Accessibility Guidelines (WCAG 2.2)** — World Wide Web Consortium (W3C)  
+  🔗 [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/)
+* **The A11Y Project Checklist** (Wspólnotowy przewodnik po dostępności cyfrowej)  
+  🔗 [a11yproject.com/checklist](https://www.a11yproject.com/checklist/)
+* **Understanding Success Criterion 1.4.3: Contrast (Minimum)** — W3C WAI  
+  🔗 [w3.org/WAI/WCAG21/Understanding/contrast-minimum](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+
+### ⚡ 4. Wydajność, Core Web Vitals i SEO (Google Developers)
+* **Google Core Web Vitals (LCP, FID/INP, CLS Overview)** — Google web.dev  
+  🔗 [web.dev/explore/fast](https://web.dev/explore/fast)
+* **Accessible Tap Targets (Wytyczne rozmiarów przycisków dotykowych)** — web.dev  
+  🔗 [web.dev/accessible-tap-targets](https://web.dev/accessible-tap-targets/)
+* **Google Search Essentials & SEO Starter Guide** — Google Search Central  
+  🔗 [developers.google.com/search/docs/fundamentals/seo-starter-guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+
+### 📱 5. Wytyczne Systemowe Dotyku (Apple & Google)
+* **Apple Human Interface Guidelines (Touch Targets minimum 44 × 44 pt)** — Apple Developer  
+  🔗 [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/)
+* **Material Design 3: Accessibility & Target Sizes (48 × 48 dp)** — Google Design  
+  🔗 [m3.material.io/foundations/accessible-design/accessibility-basics](https://m3.material.io/foundations/accessible-design/accessibility-basics)
 
 ---
 
