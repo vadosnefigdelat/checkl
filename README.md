@@ -1,207 +1,185 @@
-# The Ultimate Website Launch Checklist
-### Kompletny Przewodnik i Checklist Przed Publikacją Strony WWW
-> Zbiór najlepszych praktyk, zasad i metod sprawdzania stron internetowych zebranych ze sprawdzonych źródeł: **Nielsen Norman Group**, **Webflow**, **Smashing Magazine**, **WCAG 2.2** oraz **Google Web Vitals**.
+# Web pre-launch checklist
+
+Praktyczny checklist do sprawdzania stron internetowych przed publikacją, stworzony na podstawie wytycznych Nielsen Norman Group, Webflow, Smashing Magazine oraz WCAG.
 
 ---
 
-## 🧭 Spis treści (Table of Contents)
-1. [📱 1. UI & Responsywność (Mobile, Tablet, Desktop)](#-1-ui--responsywno%C5%9B%C4%87)
-2. [👁️ 2. UX i 10 Heurystyk Nielsena Normana](#-%EF%B8%8F-2-ux-i-10-heurystyk-nielsena-normana)
-3. [✍️ 3. Typografia, Treść i Skanowalność](#-%EF%B8%8F-3-typografia-tre%C5%9B%C4%87-i-skanowalno%C5%9B%C4%87)
-4. [🎨 4. Kolory, Kontrast i Dostępność (WCAG 2.2 / A11y)](#-4-kolory-kontrast-i-dost%C4%99pno%C5%9B%C4%87-wcag-22)
-5. [🖱️ 5. Interakcje, Formularze i Doświadczenie Użytkownika](#-%EF%B8%8F-5-interakcje-formularze-i-stany-ui)
-6. [⚡ 6. Wydajność, Obrazy i Prędkość (Core Web Vitals)](#-6-wydajno%C5%9B%C4%87-obrazy-i-core-web-vitals)
-7. [🔍 7. SEO i Widoczność w Wyszukiwarkach](#-7-seo-i-social-media-opengraph)
-8. [🔒 8. Bezpieczeństwo i Prawo (RODO, Cookies, HTTPS)](#-8-bezpiecze%C5%84stwo-i-aspekty-prawne)
-9. [🧰 9. Najlepsze Darmowe Narzędzia do Audytu](#-9-niezb%C4%99dnik-najlepsze-darmowe-narz%C4%99dzia)
-10. [📚 10. Źródła i Literatura (Official Sources)](#-10-%C5%BAr%C3%B3d%C5%82a-i-literatura-sources--references)
+## WEB-01 · Touch targets (Strefy dotyku)
+
+- **Dotyczy** · Urządzenia mobilne, responsywny web
+- **Jak testować** · Zmierz rzeczywiste pole klikalne przycisków, ikon i linków na telefonie. Sprawdź, czy nie są zbyt blisko siebie.
+- **Sugerowane rozwiązanie** · Zadbaj o minimum 44 × 44 pt (standard Apple) lub 48 × 48 dp (standard Google). Zwiększ padding wokół przycisków i dodaj minimum 8 px odstępu między linkami.
+- **Źródła** · [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/), [Google web.dev](https://web.dev/accessible-tap-targets/)
+
+## WEB-02 · Horizontal overflow (Przewijanie w poziomie)
+
+- **Dotyczy** · Widok mobilny i tablet
+- **Jak testować** · Otwórz stronę w narzędziach deweloperskich przeglądarki na szerokościach 375 px, 390 px i 414 px. Spróbuj przesunąć stronę w lewo i w prawo.
+- **Sugerowane rozwiązanie** · Strona nie może przesuwać się w poziomie. Sprawdź elementy ze sztywną szerokością (np. `width: 500px`), za duże zdjęcia lub za duże marginesy i zamień je na wartości procentowe lub `max-width: 100%`.
+- **Źródła** · [Webflow Responsive](https://university.webflow.com/lesson/intro-to-responsive-design)
+
+## WEB-03 · Headings scale (Skalowanie nagłówków)
+
+- **Dotyczy** · Smartfony (ekrany poniżej 480 px)
+- **Jak testować** · Zobacz, jak duży nagłówek H1 z komputera wygląda na małym ekranie telefonu.
+- **Sugerowane rozwiązanie** · Zmniejsz wielkość liter na małym ekranie (np. z 48 px do 28–32 px). Unikaj sytuacji, w której jedno słowo łamie się w połowie lub zajmuje cały ekran.
+- **Źródła** · [Smashing Magazine](https://www.smashingmagazine.com/2021/03/complete-website-launch-checklist/)
+
+## WEB-04 · Mobile navigation (Nawigacja mobilna)
+
+- **Dotyczy** · Menu hamburger na telefonie
+- **Jak testować** · Otwórz menu, kliknij w link do sekcji i zobacz, czy menu samo się zamyka oraz czy da się je łatwo zamknąć krzyżykiem lub kliknięciem w tło.
+- **Sugerowane rozwiązanie** · Menu po kliknięciu w link powinno przenieść użytkownika do sekcji i automatycznie się schować, żeby nie zasłaniało treści.
+- **Źródła** · [NN/g Mobile Navigation](https://www.nngroup.com/articles/hamburger-menus/)
 
 ---
 
-## 📱 1. UI & Responsywność
+## UX-01 · System status & feedback (Stan systemu)
 
-Przetestuj stronę na co najmniej 4 szerokościach ekranu: **Mobile (375–420px)**, **Tablet (768–1024px)**, **Laptop (1280–1440px)**, **Duży monitor (1920px+)**.
+- **Dotyczy** · Formularze, przyciski akcji, ładowanie danych
+- **Jak testować** · Wypełnij formularz na stronie i kliknij wyślij. Zobacz, czy strona od razu daje znać, że coś się dzieje.
+- **Sugerowane rozwiązanie** · Zastosuj pierwszą heurystykę Nielsena (Visibility of System Status). Pokaż animację ładowania (spinner) na przycisku podczas wysyłania, a po zakończeniu wyświetl wyraźny komunikat z podziękowaniem.
+- **Źródła** · [NN/g Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 
-* [ ] **Brak poziomego paska przewijania (No Horizontal Overflow):** Strona na telefonie nie może przesuwać się w lewo/prawo. Nic nie może wystawać poza krawędź ekranu (`overflow-x: hidden` to tylko ostateczność, szukaj elementów o sztywnej szerokości `width: ...px`).
-* [ ] **Minimalna strefa dotyku (Touch Target Size):** Według standardów Google i Apple, każdy klikalny element na telefonie (przycisk, ikona menu, link) musi mieć minimum **44 × 44 px** (lub **48 × 48 px**), aby użytkownik nie klikał przypadkowo sąsiednich rzeczy.
-* [ ] **Odstępy między elementami klikalnymi:** Pomiędzy dwoma linkami lub ikonami na telefonie zachowaj minimum **8–12 px** marginesu.
-* [ ] **Skalowanie nagłówków:** Upewnij się, że wielkie nagłówki z wersji komputerowej (np. 56px) na telefonie zmniejszają się (np. do 28–34px) i nie dzielą słów w nienaturalnych miejscach.
-* [ ] **Test obrotu ekranu (Landscape):** Sprawdź, czy po obróceniu telefonu poziomo nagłówek i menu nie zasłaniają całego ekranu.
-* [ ] **Zamykanie menu mobilnego:** Czy menu "hamburger" po kliknięciu w link automatycznie się zwija i nie blokuje ekranu?
+## UX-02 · User freedom & modals (Zamykanie okienek)
 
----
+- **Dotyczy** · Okienka pop-up, banery, powiększone zdjęcia
+- **Jak testować** · Otwórz okienko na stronie i spróbuj je zamknąć klawiszem Esc, kliknięciem w ciemne tło lub krzyżykiem.
+- **Sugerowane rozwiązanie** · Użytkownik musi mieć pełną kontrolę (User Control and Freedom). Dodaj wyraźny przycisk zamknięcia `×` w prawym górnym rogu i pozwól zamknąć okno kliknięciem poza nim.
+- **Źródła** · [NN/g Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 
-## 👁️ 2. UX i 10 Heurystyk Nielsena Normana
+## UX-03 · Error prevention (Zapobieganie błędom)
 
-Zasady użyteczności stworzone przez **Nielsen Norman Group (NN/g)** — światowy autorytet w dziedzinie User Experience:
+- **Dotyczy** · Formularze kontaktowe i pola do wpisywania tekstu
+- **Jak testować** · Wpisz błędny numer telefonu lub e-mail bez znaku `@` i spróbuj wysłać.
+- **Sugerowane rozwiązanie** · Waliduj dane na bieżąco. Wyświetlaj krótką i pomocną podpowiedź pod polem (np. „Podaj poprawny adres e-mail, np. jan@domena.pl”), zamiast ogólnego napisu „Błąd”.
+- **Źródła** · [NN/g Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/), [Webflow Launch QA](https://webflow.com/blog/website-launch-checklist)
 
-* [ ] **Widoczność stanu systemu (Visibility of System Status):** Użytkownik w każdej chwili wie, co się dzieje. Jeśli formularz wysyła dane — pojawia się animacja ładowania (spinner / pasek postępu), a po wysłaniu jasny komunikat sukcesu.
-* [ ] **Dopasowanie do prawdziwego świata (Match with the Real World):** Język strony jest prosty i naturalny dla odbiorcy. Brak hermetycznego żargonu i trudnych skrótów technicznych.
-* [ ] **Kontrola i wolność użytkownika (User Control and Freedom):** Użytkownik może w każdej chwili zamknąć okno pop-up / modal (klawiszem `Esc`, wyraźnym krzyżykiem `×` lub kliknięciem w tło).
-* [ ] **Spójność i standardy (Consistency and Standards):** 
-  * Logo w lewym górnym rogu zawsze prowadzi do strony głównej.
-  * Koszyk i profil znajdują się w prawym górnym rogu.
-  * Linki wyglądają jak linki (są podkreślone lub mają odróżniający się kolor).
-* [ ] **Zapobieganie błędom (Error Prevention):** W polach formularza (np. telefon, e-mail) z góry podpowiedz poprawny format (np. placeholder: `twoj@email.pl`).
-* [ ] **Rozpoznawanie zamiast przypominania (Recognition rather than Recall):** Informacje potrzebne do podjęcia decyzji (np. cena, czas dostawy, godziny otwarcia) są widoczne od razu, a nie ukryte głęboko w podstronach.
-* [ ] **Estetyka i minimalizm:** Usunięto wszystkie zbędne elementy, które tylko zaśmiecają stronę i odciągają uwagę od głównego celu (Call to Action).
-* [ ] **Własna strona błędu 404 (Custom 404 Page):** Zamiast systemowego błędu serwera, strona posiada dedykowaną, przyjazną stronę 404 z przyciskiem *„Wróć na stronę główną”* i wyszukiwarką.
+## UX-04 · Custom 404 page (Strona błędu 404)
 
----
-
-## ✍️ 3. Typografia, Treść i Skanowalność
-
-Użytkownicy w internecie **nie czytają tekstu od deski do deski — oni go skanują** (tzw. F-Pattern).
-
-* [ ] **Maksymalnie 2 rodziny fontów:** Jeden krój na nagłówki (np. szeryfowy lub wyrazisty display) i jeden neutralny krój na treść (np. *Inter*, *Plus Jakarta Sans*, *Roboto*).
-* [ ] **Hierarchia wielkości (Modular Scale):** Wyraźna różnica skali między H1 (główny tytuł), H2 (sekcja), H3 (kafelki) i tekstem akapitowym.
-* [ ] **Optymalna interlinia (*line-height*):**
-  * Zwykły tekst: **1.5 – 1.65 (150%–165%)** — zapewnia swobodny oddech dla oka.
-  * Wielkie nagłówki: **1.05 – 1.20 (105%–120%)** — zapobiega rozpadaniu się tytułu.
-* [ ] **Długość wiersza (Line Length):** Szerokość kolumny tekstu powinna wynosić od **45 do 75 znaków na wiersz** (ok. 600–700 px). Zbyt szerokie linijki męczą wzrok.
-* [ ] **Krótkie akapity:** Maksymalnie **3–4 linijki w akapicie**. Dziel tekst śródtytułami, pogrubieniami i listami punktowanymi.
-* [ ] **Likwidacja „bękartów” i „sierot” (Wiszące spójniki):** Samotne litery (*a, i, o, u, w, z*) na końcach linijek przeniesione do nowego wiersza za pomocą twardej spacji (`&nbsp;` lub `Shift + Enter`).
-* [ ] **Brak tekstów tymczasowych:** Usunięte wszystkie fragmenty *„Lorem Ipsum”*, *„test test”*, a także domyślne napisy szablonów.
-* [ ] **Sprawdzenie danych kontaktowych:** Prawdziwy i działający numer telefonu, adres e-mail, aktualne godziny otwarcia i adres z linkiem do Map Google.
+- **Dotyczy** · Nieistniejące podstrony
+- **Jak testować** · Wpisz w przeglądarce adres strony z losowym ciągiem liter na końcu (np. `/asdfgh`).
+- **Sugerowane rozwiązanie** · Zamiast pustego systemowego błędu serwera przygotuj przyjazną stronę 404 z krótkim tekstem i dużym przyciskiem powrotu na stronę główną.
+- **Źródła** · [Smashing Magazine](https://www.smashingmagazine.com/2021/03/complete-website-launch-checklist/)
 
 ---
 
-## 🎨 4. Kolory, Kontrast i Dostępność (WCAG 2.2)
+## TXT-01 · Font pairing & hierarchy (Hierarchia fontów)
 
-Dostępność cyfrowa (*Accessibility / a11y*) to gwarancja, że z Twojej strony skorzystają również osoby słabowidzące, starsze lub korzystające z czytników ekranu.
+- **Dotyczy** · Wszystkie podstrony serwisu
+- **Jak testować** · Sprawdź w stylach, ile różnych krojów pisma zostało użytych na stronie.
+- **Sugerowane rozwiązanie** · Ogranicz się do maksymalnie 2 fontów (jeden wyrazisty na nagłówki, drugi prosty i czytelny na zwykły tekst). Zadbaj o wyraźną różnicę wielkości między H1, H2 i tekstem zwykłym.
+- **Źródła** · [Webflow Typography](https://university.webflow.com/lesson/intro-to-responsive-design)
 
-* [ ] **Zasada podziału 60 – 30 – 10:**
-  * **60%:** Kolor dominujący (tło, baza).
-  * **30%:** Kolor struktury (karty, teksty, linie).
-  * **10%:** Wyrazisty kolor akcentu (przyciski CTA, najważniejsze komunikaty).
-* [ ] **Minimalny współczynnik kontrastu tekstu (WCAG AA / AAA):**
-  * Zwykły tekst do tła: minimum **4.5:1** (zalecane **7:1** dla poziomu AAA).
-  * Duży tekst (od 24px) lub pogrubiony (od 18.5px): minimum **3:1**.
-* [ ] **Kolor to nie jedyny nośnik informacji:** Nie wyróżniaj linków w tekście wyłącznie kolorem — dodaj podkreślenie. Komunikaty błędów oprócz czerwonego koloru muszą mieć ikonkę ostrzegawczą i jasny tekst.
-* [ ] **Miękkie tło zamiast ostrej bieli:** Zamiast agresywnego `#FFFFFF` warto stosować złamaną biel, kość słoniową lub subtelny krem (np. `#FAF7F2`, `#F8F9FA`), co zmniejsza zmęczenie oczu.
-* [ ] **Teksty alternatywne dla grafik (`alt="..."`):** Wszystkie zdjęcia niosące treść mają krótki, opisowy znacznik alt (np. `alt="Filiżanka świeżo parzonego cappuccino z cynamonem"`). Grafiki czysto ozdobne mają pusty atrybut `alt=""`.
-* [ ] **Nawigacja klawiaturą (Tab Navigation):** Możliwość przejścia przez całą stronę wyłącznie klawiszem `Tab` (widoczny focus outline wokół klikalnych elementów).
+## TXT-02 · Line length & height (Długość wiersza i interlinia)
 
----
+- **Dotyczy** · Akapity i bloki tekstu
+- **Jak testować** · Policz średnią liczbę znaków w jednej linijce tekstu na komputerze. Sprawdź, czy tekst nie zlewa się w pionie.
+- **Sugerowane rozwiązanie** · Utrzymuj długość linii w przedziale od 45 do 75 znaków. Ustaw interlinię (`line-height`) na około 150%–165% dla zwykłego tekstu, a dla dużych nagłówków zmniejsz do około 110%–120%.
+- **Źródła** · [NN/g Text Scannability](https://www.nngroup.com/articles/how-little-do-users-read/)
 
-## 🖱️ 5. Interakcje, Formularze i Stany UI
+## TXT-03 · Scannability & paragraphs (Skanowalność treści)
 
-* [ ] **Stany interaktywne (Hover, Active, Focus):**
-  * Każdy przycisk i link reaguje na najechanie kursorem myszy (*hover*).
-  * Widoczny stan wciśnięcia (*active*).
-  * Widoczne obramowanie dla osób nawigujących klawiaturą (*focus-visible*).
-* [ ] **Walidacja formularza na żywo (Inline Validation):** Użytkownik widzi błąd od razu po wpisaniu złego maila, a nie dopiero po przeładowaniu całej strony.
-* [ ] **Pola formularza dostosowane do urządzeń mobilnych:**
-  * W polu na telefon klawiatura przełącza się na numeryczną (`type="tel"`).
-  * W polu e-mail klawiatura pokazuje małpę `@` (`type="email"`).
-* [ ] **Test wysłania formularza:** 
-  * Czy po wysłaniu e-mail trafia do skrzynki odbiorczej właściciela strony?
-  * Czy e-maile nie wpadają do folderu SPAM?
-* [ ] **Sprawdzenie wszystkich linków zewnętrznych:** Linki do Instagrama, Facebooka, LinkedIn otwierają się w nowej karcie (`target="_blank" rel="noopener noreferrer"`).
-* [ ] **Płynne przewijanie (Smooth Scroll):** Kotwice w menu (np. `#kontakt`, `#menu`) płynnie przewijają widok do sekcji.
+- **Dotyczy** · Artykuły, opisy oferty, sekcje O nas
+- **Jak testować** · Rzuć okiem na stronę przez 5 sekund. Czy da się zrozumieć najważniejsze punkty bez czytania całego tekstu?
+- **Sugerowane rozwiązanie** · Ludzie czytają według wzorca litery F (F-Shaped Pattern). Dziel długi tekst na krótkie akapity (maksymalnie 3–4 linijki), używaj śródtytułów, list punktowanych i pogrubiaj słowa kluczowe.
+- **Źródła** · [NN/g F-Pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)
+
+## TXT-04 · Hanging prepositions (Wiszące spójniki)
+
+- **Dotyczy** · Teksty w języku polskim
+- **Jak testować** · Przejrzyj końce linijek w nagłówkach i akapitach.
+- **Sugerowane rozwiązanie** · Nie zostawiaj pojedynczych małych liter (a, i, o, u, w, z) na końcu wiersza. Przenieś je do nowej linii za pomocą twardej spacji (`&nbsp;` lub `Shift + Enter`).
+- **Źródła** · [PWN Typografia](https://sjp.pwn.pl/)
 
 ---
 
-## ⚡ 6. Wydajność, Obrazy i Core Web Vitals
+## A11Y-01 · Color contrast (Kontrast tekstu do tła)
 
-Szybkość ładowania decyduje o tym, czy użytkownik zostanie na stronie, czy zamknie ją po 3 sekundach.
+- **Dotyczy** · Wszystkie teksty, etykiety, przyciski i ikony
+- **Jak testować** · Użyj narzędzia WebAIM Contrast Checker lub wtyczki WAVE, aby zmierzyć współczynnik kontrastu.
+- **Sugerowane rozwiązanie** · Współczynnik kontrastu tekstu do tła musi wynosić minimum 4.5:1 (poziom WCAG AA) dla zwykłego tekstu oraz minimum 3:1 dla dużych nagłówków. Unikaj jasnoszarego tekstu na jasnym tle.
+- **Źródła** · [W3C WCAG 2.2](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html), [WebAIM Checker](https://webaim.org/resources/contrastchecker/)
 
-* [ ] **Nowoczesne formaty grafik:** Wszystkie zdjęcia skompresowane i zapisane w formatach **WebP** lub **AVIF** (zamiast ciężkich PNG/JPG).
-* [ ] **Właściwe wymiary grafik:** Zdjęcie wyświetlane w rozmiarze 400 × 400 px nie powinno mieć w pliku 4000 × 4000 px i ważyć 8 MB. Plik powinien ważyć poniżej **150–250 KB**.
-* [ ] **Opóźnione ładowanie (`loading="lazy"`):** Zdjęcia poniżej pierwszego ekranu ładują się dopiero wtedy, gdy użytkownik do nich przewinie.
-* [ ] **Optymalizacja fontów:** Fonty w formacie `.woff2` z parametrem `font-display: swap`, aby tekst pojawiał się natychmiast bez białego ekranu (*FOIT*).
-* [ ] **Wynik Google PageSpeed Insights:** Strona osiąga minimum **85+ punktów** na urządzeniach mobilnych i **95+** na komputerach.
-* [ ] **Brak przesunięć układu (CLS - Cumulative Layout Shift):** Wszystkie obrazki i ramki wideo mają określone atrybuty `width` i `height`, aby strona nie „skakała” podczas wczytywania.
+## A11Y-02 · Color independence (Informacja nie tylko kolorem)
 
----
+- **Dotyczy** · Linki w tekście, stany błędów, wykresy
+- **Jak testować** · Sprawdź stronę w skali szarości (symulacja daltonizmu).
+- **Sugerowane rozwiązanie** · Kolor nie może być jedynym sposobem przekazania informacji. Linki wewnątrz tekstu powinny mieć podkreślenie, a komunikaty błędów w formularzu muszą mieć ikonkę ostrzegawczą i czytelny tekst.
+- **Źródła** · [The A11Y Project](https://www.a11yproject.com/checklist/)
 
-## 🔍 7. SEO i Social Media (OpenGraph)
+## A11Y-03 · Image alt text (Teksty alternatywne dla zdjęć)
 
-* [ ] **Unikalny znacznik `<title>` na każdej podstronie:** Maksymalnie **55–60 znaków** (np. `Chwila | Sąsiedzka kawiarnia i ciasto domowe Poznań`).
-* [ ] **Meta opis (`<meta name="description">`):** Chwytliwy opis pod wynik wyszukiwania w Google o długości **130–160 znaków** z jasnym wezwaniem do odwiedzin.
-* [ ] **Tylko jeden nagłówek `<h1>` na stronę:** Stanowiący główną frazę i temat strony.
-* [ ] **Karty Social Media (Open Graph & Twitter Cards):**
-  * Zdefiniowany tag `og:title`, `og:description`, `og:url`.
-  * Wgrana dedykowana grafika `og:image` (o wymiarach **1200 × 630 px**), która wyświetla się przy wklejaniu linku na Facebooku, Messengerze, Slacku czy Twitterze/X.
-* [ ] **Wgrana ikona Favicon i Webclip:**
-  * Standardowa ikonka do zakładki przeglądarki (`favicon.ico` / `.png` 32 × 32 px).
-  * Ikonka Apple Touch Icon (180 × 180 px) dla skrótów na ekranie smartfona.
-* [ ] **Pliki `robots.txt` i mapa strony `sitemap.xml`:** Upewnij się, że strona nie ma włączonej blokady indeksowania (`noindex`), jeśli ma być widoczna w Google.
+- **Dotyczy** · Wszystkie znaczniki `<img>` na stronie
+- **Jak testować** · Sprawdź w kodzie strony, czy obrazki posiadają atrybut `alt`.
+- **Sugerowane rozwiązanie** · Każde zdjęcie, które przekazuje treść (np. produkt, schemat, zdjęcie lokalu), powinno mieć krótki i rzeczowy opis w `alt="..."`. Zdjęcia czysto dekoracyjne powinny mieć pusty atrybut `alt=""`.
+- **Źródła** · [W3C Alt Text](https://www.w3.org/WAI/tutorials/images/)
 
----
+## A11Y-04 · Keyboard navigation (Nawigacja klawiaturą)
 
-## 🔒 8. Bezpieczeństwo i Aspekty Prawne
-
-* [ ] **Aktywny certyfikat SSL (Protokół HTTPS):** W pasku adresu wyświetla się kłódka `https://`. Automatyczne przekierowanie z `http://` na `https://`.
-* [ ] **Pasek zgody na pliki Cookies (RODO / GDPR / ePrivacy):** Jeśli strona korzysta z Google Analytics, pikseli reklamowych lub zewnętrznych skryptów śledzących — użytkownik musi mieć możliwość wyrażenia zgody przed ich uruchomieniem.
-* [ ] **Polityka Prywatności i Regulamin:** Podstrona opisująca, kto jest administratorem danych, jak dane są przetwarzane i jak się skontaktować.
-* [ ] **Prawa autorskie w stopce:** Aktualny rok (np. `© 2026 Nazwa Firmy. Wszelkie prawa zastrzeżone.`).
+- **Dotyczy** · Menu, linki, przyciski, formularze
+- **Jak testować** · Przejdź przez całą stronę używając wyłącznie klawisza `Tab` (oraz `Enter` i `Spacja` do aktywacji).
+- **Sugerowane rozwiązanie** · Każdy aktywny element musi mieć widoczną ramkę zaznaczenia (focus ring). Użytkownik nie może „utknąć” w żadnym elemencie strony.
+- **Źródła** · [The A11Y Project](https://www.a11yproject.com/checklist/)
 
 ---
 
-## 🧰 9. Niezbędnik: Najlepsze Darmowe Narzędzia
+## PERF-01 · Modern image formats (Optymalizacja zdjęć)
 
-Oto zestaw najpopularniejszych narzędzi online, którymi specjaliści testują strony:
+- **Dotyczy** · Wszystkie pliki graficzne na stronie
+- **Jak testować** · Sprawdź wagę plików w zakładce Network w narzędziach deweloperskich.
+- **Sugerowane rozwiązanie** · Konwertuj pliki PNG i JPG do formatów WebP lub AVIF. Skompresuj grafiki tak, aby pojedyncze zdjęcie nie ważyło więcej niż 150–200 KB.
+- **Źródła** · [Google Fast Web](https://web.dev/explore/fast), [Squoosh](https://squoosh.app/)
 
-| Narzędzie | Zastosowanie | Link |
-| :--- | :--- | :--- |
-| **Google PageSpeed Insights** | Test prędkości, optymalizacji i wskaźników Core Web Vitals | [pagespeed.web.dev](https://pagespeed.web.dev/) |
-| **WAVE Accessibility Tool** | Automatyczny audyt błędów dostępności i kontrastu WCAG | [wave.webaim.org](https://wave.webaim.org/) |
-| **WebAIM Contrast Checker** | Precyzyjny kalkulator kontrastu tekstu do tła | [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/) |
-| **Squoosh / TinyPNG** | Błyskawiczna kompresja i konwersja grafik do formatu WebP | [squoosh.app](https://squoosh.app/) |
-| **Metatags.io** | Podgląd jak strona prezentuje się w Google, na Facebooku i Twitterze | [metatags.io](https://metatags.io/) |
-| **Responsively App** | Narzędzie do testowania strony na kilkunastu ekranach naraz | [responsively.app](https://responsively.app/) |
-| **Coolors Contrast** | Sprawdzanie palet kolorystycznych pod kątem daltonizmu | [coolors.co/contrast-checker](https://coolors.co/contrast-checker) |
+## PERF-02 · Lazy loading (Odłożone ładowanie)
 
----
+- **Dotyczy** · Grafiki i ramki iframe poniżej pierwszego ekranu
+- **Jak testować** · Odśwież stronę i sprawdź, czy zdjęcia z dolnych sekcji ładują się od razu, czy dopiero po przewinięciu.
+- **Sugerowane rozwiązanie** · Dodaj atrybut `loading="lazy"` do zdjęć umieszczonych poniżej zgięcia strony (below the fold), aby przyspieszyć początkowe wczytywanie.
+- **Źródła** · [web.dev Lazy Loading](https://web.dev/lazy-loading-images/)
 
----
+## PERF-03 · Cumulative Layout Shift (Stabilność układu CLS)
 
-## 📚 10. Źródła i Literatura (Sources & References)
-
-Wszystkie wytyczne, wymiary oraz heurystyki zawarte w tym repozytorium opierają się na oficjalnych standardach branżowych, badaniach naukowych oraz dokumentacjach technologicznych:
-
-### 🔬 1. Badania UX i Użyteczności (Nielsen Norman Group)
-* **10 Usability Heuristics for User Interface Design** — Jakob Nielsen  
-  🔗 [nngroup.com/articles/ten-usability-heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
-* **F-Shaped Pattern for Reading Web Content** (Jak użytkownicy skanują strony WWW)  
-  🔗 [nngroup.com/articles/f-shaped-pattern-reading-web-content](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)
-* **How Little Do Users Read?** (Badania dotyczące długości tekstów i czytelnictwa)  
-  🔗 [nngroup.com/articles/how-little-do-users-read](https://www.nngroup.com/articles/how-little-do-users-read/)
-
-### 🌐 2. Standardy Branżowe i Pre-Launch QA (Webflow & Smashing Magazine)
-* **The Ultimate Website Pre-Launch Checklist** — Webflow Blog  
-  🔗 [webflow.com/blog/website-launch-checklist](https://webflow.com/blog/website-launch-checklist)
-* **The Complete Website Launch Checklist (QA & Security)** — Smashing Magazine  
-  🔗 [smashingmagazine.com/2021/03/complete-website-launch-checklist](https://www.smashingmagazine.com/2021/03/complete-website-launch-checklist/)
-* **Responsive Web Design Fundamentals** — Webflow University  
-  🔗 [university.webflow.com/lesson/intro-to-responsive-design](https://university.webflow.com/lesson/intro-to-responsive-design)
-
-### ♿ 3. Dostępność Cyfrowa i Standardy WCAG (W3C & The A11Y Project)
-* **Web Content Accessibility Guidelines (WCAG 2.2)** — World Wide Web Consortium (W3C)  
-  🔗 [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/)
-* **The A11Y Project Checklist** (Wspólnotowy przewodnik po dostępności cyfrowej)  
-  🔗 [a11yproject.com/checklist](https://www.a11yproject.com/checklist/)
-* **Understanding Success Criterion 1.4.3: Contrast (Minimum)** — W3C WAI  
-  🔗 [w3.org/WAI/WCAG21/Understanding/contrast-minimum](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
-
-### ⚡ 4. Wydajność, Core Web Vitals i SEO (Google Developers)
-* **Google Core Web Vitals (LCP, FID/INP, CLS Overview)** — Google web.dev  
-  🔗 [web.dev/explore/fast](https://web.dev/explore/fast)
-* **Accessible Tap Targets (Wytyczne rozmiarów przycisków dotykowych)** — web.dev  
-  🔗 [web.dev/accessible-tap-targets](https://web.dev/accessible-tap-targets/)
-* **Google Search Essentials & SEO Starter Guide** — Google Search Central  
-  🔗 [developers.google.com/search/docs/fundamentals/seo-starter-guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
-
-### 📱 5. Wytyczne Systemowe Dotyku (Apple & Google)
-* **Apple Human Interface Guidelines (Touch Targets minimum 44 × 44 pt)** — Apple Developer  
-  🔗 [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/)
-* **Material Design 3: Accessibility & Target Sizes (48 × 48 dp)** — Google Design  
-  🔗 [m3.material.io/foundations/accessible-design/accessibility-basics](https://m3.material.io/foundations/accessible-design/accessibility-basics)
+- **Dotyczy** · Zdjęcia, banery, fonty webowe
+- **Jak testować** · Otwórz stronę przy wolnym łączu i obserwuj, czy elementy nie „skaczą” w dół podczas wczytywania obrazków.
+- **Sugerowane rozwiązanie** · Zawsze podawaj atrybuty `width` i `height` w kodzie HTML dla zdjęć i wideo. Używaj `font-display: swap` dla fontów internetowych.
+- **Źródła** · [Google Web Vitals](https://web.dev/explore/fast)
 
 ---
 
-### 💡 Prosty trik na koniec: „Test zmrużonych oczu” (*Squint Test*)
-Odsuń się od monitora na krok i mocno zmruż oczy, aby obraz się rozmył:
-1. Czy od razu widzisz 2–3 najważniejsze elementy na ekranie?
-2. Jeśli wszystko zlewa się w jedną szarą plamę — dodaj więcej pustej przestrzeni (white space) i wzmocnij kontrast kluczowych przycisków!
+## SEO-01 · Title & Meta Description (Tytuł i opis w Google)
+
+- **Dotyczy** · Sekcja `<head>` każdej podstrony
+- **Jak testować** · Użyj narzędzia do podglądu wyników Google (np. metatags.io) lub sprawdź kod źródłowy.
+- **Sugerowane rozwiązanie** · Tytuł `<title>` powinien być unikalny, zawierać słowa kluczowe i mieć maksymalnie 55–60 znaków. Opis `<meta name="description">` powinien zachęcać do kliknięcia i mieć od 130 do 160 znaków.
+- **Źródła** · [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+
+## SEO-02 · OpenGraph preview cards (Podgląd w social media)
+
+- **Dotyczy** · Linki udostępniane na Facebooku, Messengerze, LinkedIn, Slacku
+- **Jak testować** · Wklej link do strony w debugerze Facebook Sharing Debugger lub wyślij link na czacie.
+- **Sugerowane rozwiązanie** · Ustaw tagi `og:title`, `og:description` oraz przygotuj grafikę `og:image` o wymiarach 1200 × 630 px, żeby link wyglądał profesjonalnie w mediach społecznościowych.
+- **Źródła** · [Open Graph Protocol](https://ogp.me/)
+
+## SEO-03 · Favicon & Touch Icon (Ikonka w zakładce)
+
+- **Dotyczy** · Zakładka przeglądarki i skróty na telefonie
+- **Jak testować** · Spójrz na kartę w przeglądarce i dodaj stronę do ekranu początkowego w smartfonie.
+- **Sugerowane rozwiązanie** · Wgraj plik `favicon.ico` / `favicon.png` (32 × 32 px) oraz ikonę `apple-touch-icon.png` (180 × 180 px), aby strona nie wyświetlała domyślnego pustego symbolu.
+- **Źródła** · [Webflow Launch QA](https://webflow.com/blog/website-launch-checklist)
+
+---
+
+## SEC-01 · SSL & HTTPS (Bezpieczne połączenie)
+
+- **Dotyczy** · Cała domena serwisu
+- **Jak testować** · Sprawdź pasek adresu przeglądarki — czy obok adresu wyświetla się symbol kłódki `https://`.
+- **Sugerowane rozwiązanie** · Zainstaluj bezpłatny certyfikat SSL (np. Let's Encrypt) i ustaw automatyczne przekierowanie 301 z protokołu `http://` na `https://`.
+- **Źródła** · [Google Web Security](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+
+## SEC-02 · Privacy policy & cookies (Polityka prywatności i ciasteczka)
+
+- **Dotyczy** · Zgodność prawna (RODO / GDPR)
+- **Jak testować** · Sprawdź, czy w stopce znajduje się link do Polityki Prywatności i czy przy pierwszej wizycie pojawia się informacja o plikach cookies.
+- **Sugerowane rozwiązanie** · Jeśli na stronie działają skrypty śledzące (np. Google Analytics, Pixel Mety) lub formularz zbiera dane osobowe, dodaj podstronę Polityki Prywatności z danymi administratora oraz baner zgody na cookies.
+- **Źródła** · [Smashing Magazine QA](https://www.smashingmagazine.com/2021/03/complete-website-launch-checklist/)
