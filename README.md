@@ -1,10 +1,6 @@
-# 🚀 The Ultimate Website Launch Checklist
+# The Ultimate Website Launch Checklist
 ### Kompletny Przewodnik i Checklist Przed Publikacją Strony WWW
-> Zbiór najlepszych praktyk, heurystyk i metod audytu stron internetowych zebranych ze sprawdzonych źródeł: **Nielsen Norman Group (NN/g)**, **Webflow Pre-Launch QA**, **Smashing Magazine**, **The A11Y Project (WCAG 2.2)** oraz **Google Web Vitals**.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/vadosnefigdelat/checkl/pulls)
-[![Web Standards](https://img.shields.io/badge/Standards-WCAG%202.2%20%7C%20Core%20Web%20Vitals-blue.svg)](#)
+> Zbiór najlepszych praktyk, zasad i metod sprawdzania stron internetowych zebranych ze sprawdzonych źródeł: **Nielsen Norman Group**, **Webflow**, **Smashing Magazine**, **WCAG 2.2** oraz **Google Web Vitals**.
 
 ---
 
@@ -209,6 +205,3 @@ Wszystkie wytyczne, wymiary oraz heurystyki zawarte w tym repozytorium opierają
 Odsuń się od monitora na krok i mocno zmruż oczy, aby obraz się rozmył:
 1. Czy od razu widzisz 2–3 najważniejsze elementy na ekranie?
 2. Jeśli wszystko zlewa się w jedną szarą plamę — dodaj więcej pustej przestrzeni (white space) i wzmocnij kontrast kluczowych przycisków!
-
----
-*Projekt otwarty na rozwój. Jeśli masz pomysł na dodatkowe punkty kontrolne, stwórz Pull Request lub zgłoś Issue!*
